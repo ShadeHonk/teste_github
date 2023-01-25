@@ -8,11 +8,14 @@ on:
 
 permissions:
   contents: read
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v3
@@ -21,16 +24,20 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
+
     - name: Create temporary ssh key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh-key.pem
+      
     - name: Configure ssh-agent
       run: |
         chmod 600 ssh-key.pem
         eval "$(ssh-agent -s)"
         ssh-add ssh-key.pem
+    
     - name: Deploy to server
       run: rsync -avz -e 'ssh -i ssh-key.pem' --delete --exclude='.git' --exclude='vendor' . ubuntu@ec2-18-228-223-214.sa-east-1.compute.amazonaws.com:/var/www/html/teste_github/teste_github
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        
     - name: Cleanup ssh key
       run: rm ssh-key.pem
-    env:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
