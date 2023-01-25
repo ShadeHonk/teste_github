@@ -22,7 +22,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Create temporary ssh key
-      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh-key.pem
+      run: echo "${{ secrets.PEM_KEY }}" > ssh-key.pem
     - name: Configure ssh-agent
       run: |
         chmod 600 ssh-key.pem
@@ -33,4 +33,4 @@ jobs:
     - name: Cleanup ssh key
       run: rm ssh-key.pem
     env:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      PEM_KEY: ${{ secrets.PEM_KEY }}
