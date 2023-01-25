@@ -39,7 +39,7 @@ jobs:
         ssh-add ssh-key.pem
     
     - name: Deploy to server
-      run: rsync -avz -e 'ssh -i "ssh-key.pem" ubuntu@ec2-18-228-223-214.sa-east-1.compute.amazonaws.com:/var/www/html > rsync-output.txt
+      run: rsync -avz -e 'ssh -i "ssh-key.pem"' ubuntu@ec2-18-228-223-214.sa-east-1.compute.amazonaws.com:/var/www/html > rsync-output.txt
     - name: Debug file path
       run: echo "encontrado em:$(pwd)"
     - name: Examine rsync output
