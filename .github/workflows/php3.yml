@@ -27,6 +27,8 @@ jobs:
 
     - name: Create temporary ssh key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh-key.pem
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       
     - name: Configure ssh-agent
       run: |
