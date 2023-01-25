@@ -17,4 +17,4 @@ jobs:
       run: |
         cd  /var/www/html/teste_github/teste_github
         git pull 
-        <deployment-commands>
+        sudo service nginx restart
