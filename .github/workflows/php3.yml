@@ -45,6 +45,5 @@ jobs:
     - name: Examine rsync output
       run: cat rsync-output.txt
         
-        
     - name: Cleanup ssh key
       run: rm ssh-key.pem
