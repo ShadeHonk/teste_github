@@ -14,8 +14,33 @@ jobs:
     - name: Copy files with SSH
       uses: easingthemes/ssh-deploy@main
       env:
-        SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-        ARGS: "-rltgoDzvO --delete"
+        SSH_PRIVATE_KEY: -----BEGIN RSA PRIVATE KEY-----
+                         MIIEogIBAAKCAQEAr544a6qeqdLB+Gmfuxkb7hFGrVOwbcT4jwZj0EyHcYIv2Az1
+                         x2CsjGUZG5BoBoj+bqk35z9XR5QC++AF2JuxuBGNXjGqcg6RSH4vgYOzpx2G8pqj
+                         nKuqcK4qLbdLm21SADfmjugF+SAjaJavn4gIll7iOKpB8Zq/l3cAevw42rqg+CFH
+                         6KiEJI3S/+ouWnJDLX4MZumiWYiEwU0gu1AX76vdMzv5IP7dBgWG2GyOjSvDd+zC
+                         WFNLCi4eByAcMl5LT4YL5qkrCKXgQvBltWStoUpNy/CM8pxZfqAq8ueYqu5caMIO
+                         yC3wo+YIyNifaz2ilQjo590AFi+tBLtSY1kc2wIDAQABAoIBAHkuLjRs6Uq5uUrW
+                         Z3fNHa6qkSBszSMRdYoLmLhU9mjmsmjcmIPZO3ctE6QngwBva1GkxoR0+p7TjTOM
+                         I7yRwpIG2ouSrdBCKRHisJkn7cF06HdjKV6kPdm+9C/TeQJo7tpjuF4H0IdVG9nB
+                         kLH+Rh6snmEHarVyWJ4FaXlzrS+PzyyqmcwM9A1SAbcXiwePbjKAGk0I4NtPYegV
+                         jfJROU+KLO/ZPZYSi56ost6y8GwSXJDCtrgOZMmrvXp92naLHVl+vPilRMFYsDc1
+                         AIbQziKmqZdysUajlAzSt9l3rzdxRgj7vVWDS5Km0qtpDkQWqQbX1Yfkhj5SVOZ2
+                         ssR6NjECgYEA3kwEZGsy57ML22oigwH1YcFWspxbvT5Tdbly4DD57w3wwJgTu6Jh
+                         LmixVY5XY0LUD1kmfaRJtcGcjP0pGM1fT649sfe3P1Vr+Uho2UtMkn5+s79C3WKL
+                         3SBpHc5zNjac4bxpzXHQoSs8qlv50p1q7OAoNlf2Fc4+LFS1VPhVi60CgYEAyj52
+                         F2iiV+vrg/tl/pEeEngtB6IGxLaTn7SJngDqbwcvzdnEM/FaAFoewXdWZlEzAXFN
+                         1wvMdm5NNaiLJNZUs6oXMFn4Q63ljnEY2wYI6Bakcvz++R0ekP6KWq9pRh7bjZFs
+                         KElC737l0gg4UB7ZTd1cLBrA9psWm+mNZ4sG26cCgYA6xaBXqFvyFE1rOllbh7YH
+                         nWU9ncdHdmX8dwZfLbO2t1nSoaJ99kV5Tqar9xE1piKI2Eor57axPjoUsI4gB5RO
+                         bcPT/KlPLld4teM6qATbqmP3Q/b6ryZJVVtVTRL631+E8xqJ/bBqHBNS+zRGseXm
+                         MLGRBJqEU13uvIqgp3N+lQKBgDWXM4ekbFBL7Y59kVtRbNyMB7KcFpsNnjSVjFnX
+                         +EcPanVrnPf+nlC1kKzHSJe4MIHTWkL/l2BSfhcX4DcUrEEncxmW3ZhhfhCum11+
+                         TeHiDhWCQLYWJ0FYkaTSEl1IU/lBbZ2HPDtmLtPm5bUlV4OwgnoVZMhz9BvAWX30
+                         cw7FAoGAfyeGRR7Ap2UM08KVmrFIsZqGwKGXjWNA9uxTigIkKemgrHvEst3ypEe6
+                         QvCp/X+OrPq1iGxMc4BVCcNcYu4N4EdncSNiLftZO6aOXxmegf/RzlQEWWBZQa1s
+                         OOh2tMbjejrp1HCQcF5DiY+UWkVSN3WwWLsm1En65ZkK2+uJWDE=
+                         -----END RSA PRIVATE KEY-----
         SOURCE: "./"
         REMOTE_HOST: "ec2-18-228-223-214.sa-east-1.compute.amazonaws.com"
         REMOTE_USER: "ubuntu"
