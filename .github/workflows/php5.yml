@@ -14,8 +14,8 @@ jobs:
     - name: Copy files with SSH
       uses: easingthemes/ssh-deploy@main
       env:
-        SSH_PRIVATE_KEY: ${{secrets.SENHA_STIFODINHA}}
+        SSH_PRIVATE_KEY: ${{secrets.SENHA_ACOCERTO}}
         SOURCE: "./"
-        REMOTE_HOST: "18.231.170.174"
-        REMOTE_USER: "ubuntu"
-        TARGET: "/home/ubuntu"  
+        REMOTE_HOST: "64.225.52.60"
+        REMOTE_USER: "root"
+        TARGET: "/home"  
