@@ -1,2 +1,2 @@
 <?php
-echo    'teste deploy github';
+echo    'teste deploy';
