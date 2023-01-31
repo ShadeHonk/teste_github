@@ -11,11 +11,14 @@ jobs:
     - name: Checkout the files
       uses: actions/checkout@v3
 
-    - name: Copy files with SSH
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{secrets.SENHA_ACOCERTO}}
-        SOURCE: "./"
-        REMOTE_HOST: "64.225.52.60"
-        REMOTE_USER: "root"
-        TARGET: "/home"  
+    - name: Setup SSH
+      uses: azure/setup-ssh@v1
+      with:
+        ssh-key: ${{ secrets.SENHA_ACOCERTO }}
+        
+    - name: Deploy to DigitalOcean
+      run: |
+       ssh root@64.225.52.60 << EOF
+       cd /home
+       git pull origin main
+       EOF
