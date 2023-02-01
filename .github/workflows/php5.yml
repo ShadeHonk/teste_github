@@ -26,6 +26,6 @@ jobs:
     - name: Deploy to DigitalOcean
       run: |
         ssh root@${{ env.DO_IP }} << EOF
-        cd /path/to/your/project
+        cd /home
         git pull origin main
         EOF
