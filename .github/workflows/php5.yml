@@ -1,9 +1,8 @@
-name: Deploy
+name: Push-to-EC2
 on:
   push:
     branches:
-      - master
-
+      - main
 env:
   SSH_PRIVATE_KEY: ${{ secrets.SENHA_ACOCERTO }}
 
