@@ -1,12 +1,12 @@
-name: Deploy to DigitalOcean
+name: Deploy
 
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
-  DO_IP: 64.225.52.60
+  SSH_PRIVATE_KEY: ${{ secrets.SENHA_ACOCERTO }}
 
 jobs:
   deploy:
@@ -16,16 +16,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup SSH key
-      run: |
-        mkdir ~/.ssh
-        echo "${{ secrets.SENHA_ACOCERTO }}" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ env.DO_IP }} >> ~/.ssh/known_hosts
+    - name: Setup SSH
+      uses: shogo82148/actions-setup-ssh@v1
+      with:
+        ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
 
     - name: Deploy to DigitalOcean
-      run: |
-        ssh root@${{ env.DO_IP }} << EOF
-        cd /home
-        git pull origin main
-        EOF
+      uses: appleboy/scp-action@v1
+      with:
+        host: 64.225.52.60
+        username: root
+        key: ${{ env.SSH_PRIVATE_KEY }}
+        source: .
+        target: /var/www/html/github_teste
