@@ -18,6 +18,7 @@ jobs:
 
     - name: Setup SSH key
       run: |
+        mkdir ~/.ssh
         echo "${{ secrets.SENHA_ACOCERTO }}" | tr -d '\r' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ env.DO_IP }} >> ~/.ssh/known_hosts
@@ -25,6 +26,6 @@ jobs:
     - name: Deploy to DigitalOcean
       run: |
         ssh root@${{ env.DO_IP }} << EOF
-        cd /home
+        cd /path/to/your/project
         git pull origin main
         EOF
