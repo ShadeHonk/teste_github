@@ -3,27 +3,19 @@ on:
   push:
     branches:
       - main
-env:
-  SSH_PRIVATE_KEY: ${{ secrets.SENHA_ACOCERTO }}
-
 jobs:
   deploy:
+    name: Deploy to Digital Ocean
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Checkout the files
+      uses: actions/checkout@v3
 
-    - name: Setup SSH
-      uses: shogo82148/actions-setup-ssh@v1
-      with:
-        ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
-
-    - name: Deploy to DigitalOcean
-      uses: appleboy/scp-action@v1
-      with:
-        host: 64.225.52.60
-        username: root
-        key: ${{ env.SSH_PRIVATE_KEY }}
-        source: .
-        target: /var/www/html/github_teste
+    - name: Copy files with SSH
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{secrets.TESTE_DEPLOY}}
+        SOURCE: "./"
+        REMOTE_HOST: "159.65.162.39"
+        REMOTE_USER: "root"
+        TARGET: "/root"
