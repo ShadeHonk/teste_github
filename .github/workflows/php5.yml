@@ -1,21 +1,21 @@
-name: Push-to-EC2
+name: AtualizaGithub
 on:
   push:
     branches:
       - main
 jobs:
-  deploy:
-    name: Deploy to Digital Ocean
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the files
-      uses: actions/checkout@v3
-
-    - name: Copy files with SSH
+    - name: Checkout do repositorio
+      uses: actions/checkout@1
+    - name: Deploy para meu hosting
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{secrets.TESTE_DEPLOY}}
-        SOURCE: "./"
-        REMOTE_HOST: "159.65.162.39"
-        REMOTE_USER: "root"
-        TARGET: "/root"
+        ARGS: "-rltgoDzvO --delete"
+        SOURCE: "src/"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+        TARGET: ${{ secrets.REMOTE_TARGET}}
